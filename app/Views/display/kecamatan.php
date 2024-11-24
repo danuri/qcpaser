@@ -4,8 +4,8 @@
             <th>Kecamatan</th>
             <th>TPS Sample</th>
             <th>Suara Masuk (%)</th>
-            <th>(1) Fahmi - Ikhwan (%)</th>
-            <th>(2) Syarifah - Denni (%)</th>
+            <th>(1) Kasmidi - Kinsu</th>
+            <th>(2) Ardiansyah - Mahyunadi</th>
         </tr>
     </thead>
     <tbody>

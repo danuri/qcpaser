@@ -4,9 +4,9 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>DB Relawan</title>
+    <title>Quick Count Paser 2024</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Database Relawan Calon Walikota" name="description" />
+    <meta content="Perhitungan Cepat Pilkada Paser 2024" name="description" />
     <meta content="Danunih" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url()?>assets/images/favicon.ico">
@@ -127,7 +127,7 @@
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="<?= site_url('admin/auth/logout')?>"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <a class="dropdown-item" href="<?= site_url('auth/logout')?>"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
                 </div>
             </div>
@@ -200,13 +200,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin/distribusi')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('distribusi')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Distribusi Wilayah</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin/data')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('data')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Data Suara</span>
                             </a>
                         </li>

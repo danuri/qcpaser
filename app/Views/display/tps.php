@@ -4,8 +4,8 @@
             <th>TPS</th>
             <th>TPS Sample</th>
             <th>Suara Masuk (%)</th>
-            <th>(1) Fahmi - Ikhwan (%)</th>
-            <th>(2) Syarifah - Denni (%)</th>
+            <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
+            <th>(2) Syarifah Masitah-Denni Mappa</th>
         </tr>
     </thead>
     <tbody>

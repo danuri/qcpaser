@@ -4,10 +4,10 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>DB Relawan</title>
+    <title>Real Count - Pilkada Bengkulu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
+    <meta content="Danunih" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url()?>assets/images/favicon.ico">
 
@@ -47,10 +47,9 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="index.html" class="d-inline-block auth-logo">
-                                    <img src="<?= base_url()?>assets/images/quickcount-light.png" alt="" height="50">
+                                    <img src="<?= base_url()?>assets/images/beranijuara.png" alt="" height="100">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-semibold">Premium Admin & Dashboard Template</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +102,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> DB Voter. by Develmedia
+                                <script>document.write(new Date().getFullYear())</script> DB Real Count. by Dimensi Research & Consulting
                             </p>
                         </div>
                     </div>

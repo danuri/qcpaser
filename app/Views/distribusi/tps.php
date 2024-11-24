@@ -14,7 +14,7 @@
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item"><a href="javascript: void(0);">Distribusi</a></li>
-          <li class="breadcrumb-item active">Kecamatan</li>
+          <li class="breadcrumb-item active">TPS</li>
         </ol>
       </div>
 
@@ -32,9 +32,8 @@
               <tr>
                 <th>TPS</th>
                 <th>TPS Sample</th>
-                <th>Suara Masuk (%)</th>
-                <th>(1) Fahmi - Ikhwan (%)</th>
-                <th>(2) Syarifah - Denni (%)</th>
+                <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
+                <th>(2) Syarifah Masitah-Denni Mappa</th>
               </tr>
             </thead>
             <tbody>
@@ -46,7 +45,6 @@
                 <tr>
                     <td><?= $row->tps_name?></td>
                     <td><?= $row->tps_dpt?></td>
-                    <td><a href="">Lihat Lampiran</a></td>
                     <td class="text-center"><?= ($row->kandidat1)?shortdec(($row->kandidat1/$suaramasuk)*100):0;?></td>
                     <td class="text-center"><?= ($row->kandidat2)?shortdec(($row->kandidat2/$suaramasuk)*100):0;?></td>
                 </tr>

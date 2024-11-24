@@ -11,7 +11,7 @@ class Display extends BaseController
     public function index()
     {
         $model = new CrudModel;
-        $data['zona'] = $model->getSuaraZona();
+        $data['kecamatan'] = $model->getSuaraKecamatan();
 
         return view('display', $data);
     }
@@ -59,6 +59,19 @@ class Display extends BaseController
         $kandidat2 = shortdec(($data->kandidat2/$jumlah)*100);
 
         $data = ['kandidat1'=>$kandidat1,'kandidat2'=>$kandidat2];
+
+        return $this->response->setJSON($data);
+    }
+
+    function progrescalon() {
+        $model = new CrudModel;
+        $data = $model->getSuara();
+
+        $jumlah = $data->kandidat1+$data->kandidat2;
+        $kandidat1 = shortdec(($data->kandidat1/$jumlah)*100);
+        $kandidat2 = shortdec(($data->kandidat2/$jumlah)*100);
+
+        $data = ['k1'=>$kandidat1, 'k2'=>$kandidat2];
 
         return $this->response->setJSON($data);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -11,15 +11,15 @@ class Distribusi extends BaseController
     public function index()
     {
         $model = new CrudModel;
-        $data['zona'] = $model->getSuaraZona();
-        return view('admin/distribusi/zona', $data);
+        $data['kecamatan'] = $model->getSuaraKecamatan();
+        return view('distribusi/kecamatan', $data);
     }
 
     public function kecamatan($id)
     {
         $model = new CrudModel;
         $data['kecamatan'] = $model->getSuaraKecamatan($id);
-        return view('admin/distribusi/kecamatan', $data);
+        return view('distribusi/kecamatan', $data);
     }
 
     public function kelurahan($id)
@@ -27,13 +27,13 @@ class Distribusi extends BaseController
         $model = new CrudModel;
         $data['kelurahan'] = $model->getSuaraKelurahan($id);
         
-        return view('admin/distribusi/kelurahan', $data);
+        return view('distribusi/kelurahan', $data);
     }
 
     public function tps($id)
     {
         $model = new CrudModel;
         $data['tps'] = $model->getSuaraTps($id);
-        return view('admin/distribusi/tps', $data);
+        return view('distribusi/tps', $data);
     }
 }

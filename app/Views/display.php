@@ -51,12 +51,12 @@
             <div class="container" style="max-width: 1350px;">
                 <div class="row justify-content-center">
                     <div class="col-lg-3">
-                        <!-- <img src="assets/images/quickcount.png" width="100%"> -->
+                        <!-- <img src="assets/images/dimensimri.png" width="100%"> -->
                     <div class="mt-3">
                         <!-- <h3 class="text-center">Data Masuk</h3> -->
                     <div id="total_progres" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
                     </div>
-                    <div class="card border card-border-warning" style="background: none;">
+                    <div class="card" style="background: none;">
                                             <div class="card-body">
                                             <ul class="list-group list-group-flush border-dashed">
                                         <li class="list-group-item px-0">
@@ -177,38 +177,34 @@
                 <!-- end row -->
 
                 <div class="row g-3">
-                <div class="card border card-border-warning" style="background: none;">
-                    <div class="card-body">
-                        <table class="table table-stripped align-middle" style="width:100%;font-size: 18px;">
-                            <thead>
-                                <tr>
-                                    <th>Zona</th>
-                                    <th>TPS Sample</th>
-                                    <th>TPS Masuk</th>
-                                    <th>Data Masuk (%)</th>
-                                    <th>(1) Fahmi - Ikhwan (%)</th>
-                                    <th>(2) Syarifah - Denni (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                foreach($zona as $row){
-                                    $suaramasuk = ($row->kandidat1+$row->kandidat2);
-                                    $progressuara = ($suaramasuk / $row->dpt)*100;
-                                ?>
-                                <tr>
-                                    <td><a href="javascript:;" onclick="distkecamatan(<?= $row->zona_id?>)"><?= $row->zona_name?></a></td>
-                                    <td><?= $row->sampel?></td>
-                                    <td>...</td>
-                                    <td><?= shortdec($progressuara)?></td>
-                                    <td class="text-center"><?= ($row->kandidat1)?shortdec(($row->kandidat1/$suaramasuk)*100):0;?></td>
-                                    <td class="text-center"><?= ($row->kandidat2)?shortdec(($row->kandidat2/$suaramasuk)*100):0;?></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
+                    <table class="table table-stripped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Kecamatan</th>
+                                <th>TPS Sample</th>
+                                <th>TPS Masuk</th>
+                                <th>Data Masuk (%)</th>
+                                <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
+                                <th>(2) Syarifah Masitah-Denni Mappa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            foreach($kecamatan as $row){
+                                $suaramasuk = ($row->kandidat1+$row->kandidat2);
+                                $progressuara = ($suaramasuk / $row->dpt)*100;
+                            ?>
+                            <tr>
+                                <td><a href="javascript:;" onclick="distkelurahan(<?= $row->kecamatan_id?>)"><?= $row->kecamatan_name?></a></td>
+                                <td><?= $row->sampel?></td>
+                                <td>...</td>
+                                <td><?= shortdec($progressuara)?></td>
+                                <td class="text-center"><?= ($row->kandidat1)?shortdec(($row->kandidat1/$suaramasuk)*100):0;?></td>
+                                <td class="text-center"><?= ($row->kandidat2)?shortdec(($row->kandidat2/$suaramasuk)*100):0;?></td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                     
                     <!-- end col -->
 
@@ -229,23 +225,6 @@
 
     </div>
     <!-- end layout wrapper -->
-
-<!-- staticBackdrop Modal -->
-<div class="modal fade" id="distKecamatan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">                
-                <div class="mt-4" id="bodykecamatan">
-                    <h4 class="mb-3">Distribusi Suara Kecamatan</h4>
-                    
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="distKelurahan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">

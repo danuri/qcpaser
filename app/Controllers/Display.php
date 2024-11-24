@@ -32,6 +32,7 @@ class Display extends BaseController
 
         $progres = $model->getProgres();
         $fix = round($progres)-(round($progres)%5);
+        $fix = $fix * 2;
         
         for($limit=10;$limit <= $fix;$limit+=10){
             $data = $model->getSuaraLimit($limit);

@@ -1,0 +1,20 @@
+
+/*# sourceMappingURL=custom.min.css.map */
+
+.section {
+    padding: 0;
+    position: relative;
+}
+
+.img-paslon {
+    max-width: 65%;
+    height: auto;
+}
+
+.avatar-title {
+    color: black;
+}
+
+.bg-overlay-pattern {
+    background-image: url(../images/peta.jpg);
+}

@@ -304,7 +304,8 @@
     <script>
         $(document).ready(function() {
             $('.datatable').DataTable({
-                order : [[0,'desc']]
+                order : [[0,'desc']],
+                pageLength : 100
             });
           });
         function alert($text) {

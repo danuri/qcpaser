@@ -123,6 +123,14 @@
                       <input type="number" class="form-control" name="kandidat2" id="kandidat2">
                   </div>
               </div>
+              <div class="row mb-3">
+                  <div class="col-lg-3">
+                      <label for="tidak_sah" class="form-label">Tidak Sah</label>
+                  </div>
+                  <div class="col-lg-9">
+                      <input type="number" class="form-control" name="tidak_sah" id="tidak_sah">
+                  </div>
+              </div>
           </form>
             </div>
             <div class="modal-footer">

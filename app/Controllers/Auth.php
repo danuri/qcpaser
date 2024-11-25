@@ -46,8 +46,13 @@ class Auth extends BaseController
                 'isLoggedIn'    => true,
             ];
             session()->set($ses_data);
+
+            if($cek->level == 2){
+              return redirect()->to('data');
+            }else{
+              return redirect()->to('');
+            }
             
-            return redirect()->to('');
         }else{
             return redirect()->back()->with('message', 'Username dan Password tidak sesuai');
         }

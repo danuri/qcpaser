@@ -304,13 +304,8 @@
     <script>
         $(document).ready(function() {
             $('.datatable').DataTable({
-                              dom:"Bfrtip",
-                              buttons:["copy","excel","print","pageLength"],
-                              lengthMenu: [
-                                [10, 25, 50, 100, -1],
-                                [10, 25, 50, 100, 'Semua'],
-                              ],
-                          });
+                order : [[0,'desc']]
+            });
           });
         function alert($text) {
             Toastify({

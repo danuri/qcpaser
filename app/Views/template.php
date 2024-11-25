@@ -195,7 +195,7 @@
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <?php if(session('level') == 1){?>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboard</span>
                             </a>
                         </li>

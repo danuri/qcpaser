@@ -23,7 +23,9 @@ class Data extends BaseController
             'kandidat2' => "required",
             'tidak_sah' => "required",
           ])) {
-              return redirect()->back()->with('error', 'Data tidak lengkap');
+              // return redirect()->back()->with('error', 'Data tidak lengkap');
+              session()->setFlashdata('error', 'Data tidak lengkap');
+              return redirect()->to('data');
           }
 
             $param = [
@@ -47,7 +49,9 @@ class Data extends BaseController
             $suara = new SuaraModel();
             $suara->where('tps_id',$tpsid)->set($param)->update();
   
-            return redirect()->back()->with('message', 'Suara telah diupdate');
+            // return redirect()->back()->with('message', 'Suara telah diupdate');
+            session()->setFlashdata('message', 'Suara telah diupdate');
+            return redirect()->to('data');
     }
 
     function add() {
@@ -56,7 +60,9 @@ class Data extends BaseController
             'kandidat2' => "required",
             'tidak_sah' => "required"
           ])) {
-              return redirect()->back()->with('error', 'Data tidak lengkap');
+              // return redirect()->back()->with('error', 'Data tidak lengkap');
+              session()->setFlashdata('error', 'Data tidak lengkap');
+              return redirect()->to('data');
           }
 
           $tpsm = new TpsModel;
@@ -83,7 +89,9 @@ class Data extends BaseController
           $suara = new SuaraModel();
           $suara->insert($param);
 
-          return redirect()->back()->with('message', 'Suara telah diinput');
+          // return redirect()->back()->with('message', 'Suara telah diinput');
+          session()->setFlashdata('message', 'Suara telah diinput');
+          return redirect()->to('data');
 
     }
 

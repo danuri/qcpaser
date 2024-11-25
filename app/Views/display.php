@@ -51,7 +51,7 @@
             <div class="container" style="max-width: 1350px;">
                 <div class="row justify-content-center">
                     <div class="col-lg-3">
-                        <center><img src="assets/images/dimensimri.png" width="50%"></center>
+                        <!-- <center><img src="assets/images/dimensimri.png" width="50%"></center> -->
                     <div class="mt-3">
                         <!-- <h3 class="text-center">Data Masuk</h3> -->
                     <div id="total_progres" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
@@ -180,7 +180,7 @@
                 <!-- end row -->
 
                 <div class="row g-3">
-                    <table class="table table-stripped align-middle" style="">
+                    <table class="table table-stripped align-middle">
                         <thead>
                             <tr>
                                 <th>Zona</th>

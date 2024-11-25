@@ -70,11 +70,13 @@ class Data extends BaseController
           ];
 
           $file = $this->request->getFile('photo');
-          if (! $file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('./uploads/c1/', $newName);
-
-            $param['lampiran'] = $newName;
+          if($file){
+            if (! $file->hasMoved()) {
+              $newName = $file->getRandomName();
+              $file->move('./uploads/c1/', $newName);
+  
+              $param['lampiran'] = $newName;
+            }
           }
 
           $suara = new SuaraModel();

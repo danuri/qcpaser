@@ -52,42 +52,35 @@ class Data extends BaseController
         if (! $this->validate([
             'kandidat1' => "required",
             'kandidat2' => "required",
-            'tidak_sah' => "required",
-            'photo' => [
-                      'rules' => [
-                        'uploaded[photo]',
-                        'is_image[photo]',
-                        'mime_in[photo,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                      ]
-                  ]
+            'tidak_sah' => "required"
           ])) {
               return redirect()->back()->with('error', 'Data tidak lengkap');
           }
+
+          $tpsm = new TpsModel;
+          $tps = $tpsm->find($this->request->getVar('tps_id'));
+
+          $param = [
+            'tps_id'     => $tps->tps_id,
+            'kelurahan_id'     => $tps->kelurahan_id,
+            'kecamatan_id'     => $tps->kecamatan_id,
+            'kandidat_1' => $this->request->getVar('kandidat1'),
+            'kandidat_2' => $this->request->getVar('kandidat2'),
+            'tidak_sah' => $this->request->getVar('tidak_sah')
+          ];
 
           $file = $this->request->getFile('photo');
           if (! $file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move('./uploads/c1/', $newName);
-            
-            $tpsm = new TpsModel;
-            $tps = $tpsm->find($this->request->getVar('tps_id'));
-  
-            $param = [
-              'tps_id'     => $tps->tps_id,
-              'kelurahan_id'     => $tps->kelurahan_id,
-              'kecamatan_id'     => $tps->kecamatan_id,
-              'kandidat_1' => $this->request->getVar('kandidat1'),
-              'kandidat_2' => $this->request->getVar('kandidat2'),
-              'tidak_sah' => $this->request->getVar('tidak_sah'),
-              'lampiran' => $newName,
-            ];
-  
-            $suara = new SuaraModel();
-            $suara->insert($param);
-  
-            return redirect()->back()->with('message', 'Suara telah diinput');
 
+            $param['lampiran'] = $newName;
           }
+
+          $suara = new SuaraModel();
+          $suara->insert($param);
+
+          return redirect()->back()->with('message', 'Suara telah diinput');
 
     }
 

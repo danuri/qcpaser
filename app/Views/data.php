@@ -169,7 +169,7 @@
               </div>
               <div class="row mb-3">
                   <div class="col-lg-3">
-                      <label for="kandidat1" class="form-label">(1) DANI-SUKATNO</label>
+                      <label for="kandidat1" class="form-label">(1) Fahmi Fadli - Ikhwan Antasari</label>
                   </div>
                   <div class="col-lg-9">
                       <input type="number" class="form-control" name="kandidat1" required>
@@ -177,7 +177,7 @@
               </div>
               <div class="row mb-3">
                   <div class="col-lg-3">
-                      <label for="kandidat2" class="form-label">(2) ARI-HARIAL</label>
+                      <label for="kandidat2" class="form-label">(2) Syarifah Masitah - Denni Mappa</label>
                   </div>
                   <div class="col-lg-9">
                       <input type="number" class="form-control" name="kandidat2" required>

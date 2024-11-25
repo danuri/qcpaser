@@ -181,6 +181,7 @@ class CrudModel extends Model
                                     tps.*, 
                                     suara.kandidat_1, 
                                     suara.kandidat_2, 
+                                    suara.tidak_sah, 
                                     suara.lampiran, 
                                     suara.created_at
                                   FROM
@@ -195,6 +196,7 @@ class CrudModel extends Model
                                     tps.*, 
                                     suara.kandidat_1, 
                                     suara.kandidat_2, 
+                                    suara.tidak_sah, 
                                     suara.lampiran, 
                                     suara.created_at
                                   FROM

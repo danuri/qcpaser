@@ -42,7 +42,8 @@ class Auth extends BaseController
             $ses_data = [
                 'id'            => $cek->id,
                 'nama'          => $cek->nama,
-                'level'          => $cek->level,
+                'level'         => $cek->level,
+                'kecamatan_id'  => $cek->akses_id,
                 'isLoggedIn'    => true,
             ];
             session()->set($ses_data);

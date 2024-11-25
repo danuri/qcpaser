@@ -175,7 +175,23 @@ class CrudModel extends Model
 
       public function getData()
       {
-        $query = $this->db->query("SELECT
+        if(session('level') == 2){
+          $kecamataid = session('kecamatan_id');
+          $query = $this->db->query("SELECT
+                                    tps.*, 
+                                    suara.kandidat_1, 
+                                    suara.kandidat_2, 
+                                    suara.lampiran, 
+                                    suara.created_at
+                                  FROM
+                                    tps
+                                    LEFT JOIN
+                                    suara
+                                    ON 
+                                      tps.tps_id = suara.tps_id
+                                    WHERE tps.kecamatan_id='$kecamataid'")->getResult();
+        }else{
+          $query = $this->db->query("SELECT
                                     tps.*, 
                                     suara.kandidat_1, 
                                     suara.kandidat_2, 
@@ -187,6 +203,8 @@ class CrudModel extends Model
                                     suara
                                     ON 
                                       tps.tps_id = suara.tps_id")->getResult();
+
+        }
         return $query;
       }
 }

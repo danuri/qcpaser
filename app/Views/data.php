@@ -216,13 +216,7 @@
 <?= $this->section('script') ?>
 <script>
   $(document).ready(function() {
-    // var table = new DataTable('.datatable',{
-    //   order: [[0,'desc']]
-    // });
-
-    $('.datatable').DataTable({
-        order: [[0, 'desc']]
-    });
+    var table = new DataTable('.datatable');
   });
 
   function edit(id,name) {

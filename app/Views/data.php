@@ -216,7 +216,7 @@
 <?= $this->section('script') ?>
 <script>
   $(document).ready(function() {
-    var table = new DataTable('.datatable');
+    // var table = new DataTable('.datatable');
   });
 
   function edit(id,name) {

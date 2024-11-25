@@ -217,7 +217,7 @@
 <script>
   $(document).ready(function() {
     var table = new DataTable('.datatable',{
-      order: [0,'desc']
+      order: [[0,'desc']]
     });
   });
 

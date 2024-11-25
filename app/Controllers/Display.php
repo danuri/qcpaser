@@ -76,7 +76,7 @@ class Display extends BaseController
     function vto() {
         $model = new CrudModel;
         $suara = $model->getSuara();
-        $jumlah = $suara->kandidat1+$suara->kandidat2;
+        $jumlah = $suara->kandidat1+$suara->kandidat2+$suara->tidak_sah;
 
         $dpt = $model->getMasukDpt();
 

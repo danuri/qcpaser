@@ -74,7 +74,7 @@ class CrudModel extends Model
 
       public function getSuara()
       {
-        $query = $this->db->query("SELECT SUM(kandidat_1) AS kandidat1, SUM(kandidat_2) AS kandidat2 FROM suara")->getRow();
+        $query = $this->db->query("SELECT SUM(kandidat_1) AS kandidat1, SUM(kandidat_2) AS kandidat2, SUM(tidak_sah) AS tidak_sah FROM suara")->getRow();
         return $query;
       }
 

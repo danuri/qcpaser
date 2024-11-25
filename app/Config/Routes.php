@@ -17,7 +17,7 @@ $routes->post('update', 'Home::update',['filter' => 'auth']);
 
 
 
-$routes->group("display", ["filter" => "auth"], function ($routes) {
+$routes->group("display", ["filter" => "adminauth"], function ($routes) {
     $routes->get('', 'Display::index');
     $routes->get('progresschart', 'Display::progresschart');
     $routes->get('suara', 'Display::suara');

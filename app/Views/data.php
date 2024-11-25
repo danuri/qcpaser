@@ -42,6 +42,7 @@
                 <th>Kelurahan</th>
                 <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
                 <th>(2) Syarifah Masitah-Denni Mappa</th>
+                <th>Tidak Sah</th>
                 <th>Opsi</th>
               </tr>
             </thead>
@@ -56,6 +57,7 @@
                     <td><?= $row->kelurahan_name?> - <?= $row->kecamatan_name?></td>
                     <td><?= $row->kandidat_1?></td>
                     <td><?= $row->kandidat_2?></td>
+                    <td><?= $row->tidak_sah?></td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <?php if($suaramasuk > 0){?>

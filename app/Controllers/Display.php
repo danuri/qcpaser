@@ -29,11 +29,17 @@ class Display extends BaseController
         
         $kandidat1 = [];
         $kandidat2 = [];
+        $categories = [];
 
         $progres = $model->getProgres();
         $fix = round($progres)-(round($progres)%5);
         $fix = $fix * 2;
-        
+
+        $kandidat1[] = 0;
+        $kandidat2[] = 0;
+        $categories[] = (string) 0;
+        $cat = 5;
+
         for($limit=10;$limit <= $fix;$limit+=10){
             $data = $model->getSuaraLimit($limit);
             
@@ -45,9 +51,12 @@ class Display extends BaseController
 
             $kandidat1[] = $jkan1;
             $kandidat2[] = $jkan2;
+            $categories[] = (string) $cat;
+
+            $cat += 5;
         }
 
-        $data = ['kandidat1'=>$kandidat1,'kandidat2'=>$kandidat2];
+        $data = ['kandidat1'=>$kandidat1,'kandidat2'=>$kandidat2,'categories'=>$categories];
         return $this->response->setJSON($data);
     }
 
@@ -64,19 +73,6 @@ class Display extends BaseController
         return $this->response->setJSON($data);
     }
 
-    function progrescalon() {
-        $model = new CrudModel;
-        $data = $model->getSuara();
-
-        $jumlah = $data->kandidat1+$data->kandidat2;
-        $kandidat1 = shortdec(($data->kandidat1/$jumlah)*100);
-        $kandidat2 = shortdec(($data->kandidat2/$jumlah)*100);
-
-        $data = ['k1'=>$kandidat1, 'k2'=>$kandidat2];
-
-        return $this->response->setJSON($data);
-    }
-
     function vto() {
         $model = new CrudModel;
         $suara = $model->getSuara();
@@ -87,6 +83,13 @@ class Display extends BaseController
         $vto = shortdec(($jumlah/$dpt->jumlah)*100);
 
         echo $vto.'%';
+    }
+
+    function progrestps() {
+        $model = new CrudModel;
+        $row = $model->getMasukTPS();
+
+        echo $row->tpsmasuk.' dari 200 TPS';
     }
 
     function kecamatan($id) {

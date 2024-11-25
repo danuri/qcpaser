@@ -66,21 +66,23 @@ class CrudModel extends Model
         return $query;
       }
 
+      public function getMasukTPS()
+      {
+        $query = $this->db->query("SELECT COUNT(suara_id) AS tpsmasuk FROM suara")->getRow();
+        return $query;
+      }
+
       public function getSuara()
       {
-        $query = $this->db->query("SELECT 
-                                  SUM(kandidat_1) AS kandidat1, 
-                                  SUM(kandidat_2) AS kandidat2
-                                  FROM suara")->getRow();
+        $query = $this->db->query("SELECT SUM(kandidat_1) AS kandidat1, SUM(kandidat_2) AS kandidat2 FROM suara")->getRow();
         return $query;
       }
 
       public function getSuaraLimit($limit)
       {
-        $query = $this->db->query("SELECT 
-                                  SUM(kandidat_1) AS kandidat1, 
-                                  SUM(kandidat_2) AS kandidat2
-                                  FROM suara ORDER BY created_at ASC LIMIT 0,$limit")->getRow();
+        $query = $this->db->query("SELECT SUM(a.kandidat_1) AS kandidat1, SUM(a.kandidat_2) AS kandidat2 FROM 
+                                  (SELECT * FROM suara
+                                  suara ORDER BY created_at ASC LIMIT 0,$limit) a")->getRow();
         return $query;
       }
 
@@ -93,6 +95,27 @@ class CrudModel extends Model
         return $percent;
       }
 
+      public function getSuaraZona()
+      {
+        $query = $this->db->query("SELECT
+                                    zona.zona_name,
+                                    tps.zona_id, 
+                                    SUM(tps.tps_dpt) AS dpt,
+                                    COUNT(tps.tps_id) AS sampel,
+                                    (SELECT COUNT(suara_id) FROM suara WHERE zona_id=tps.zona_id) tpsmasuk,
+                                    (SELECT SUM(kandidat_1) FROM suara WHERE zona_id=tps.zona_id) kandidat1,
+                                    (SELECT SUM(kandidat_2) FROM suara WHERE zona_id=tps.zona_id) kandidat2
+                                    FROM
+                                        tps
+                                        INNER JOIN
+                                        zona
+                                        ON 
+                                            tps.zona_id = zona.zona_id
+                                    GROUP BY
+                                        tps.zona_id")->getResult();
+        return $query;
+      }
+
       public function getSuaraKecamatan()
       {
         $query = $this->db->query("SELECT
@@ -100,12 +123,13 @@ class CrudModel extends Model
                                     tps.kecamatan_id, 
                                     SUM(tps.tps_dpt) AS dpt,
                                     COUNT(tps.tps_id) AS sampel,
+                                    (SELECT COUNT(suara_id) FROM suara WHERE kecamatan_id=tps.kecamatan_id) tpsmasuk,
                                     (SELECT SUM(kandidat_1) FROM suara WHERE kecamatan_id=tps.kecamatan_id) kandidat1,
                                     (SELECT SUM(kandidat_2) FROM suara WHERE kecamatan_id=tps.kecamatan_id) kandidat2
                                     FROM
-                                        tps tps
+                                        tps
                                         INNER JOIN
-                                        kecamatan kecamatan
+                                        kecamatan
                                         ON 
                                             tps.kecamatan_id = kecamatan.kecamatan_id
                                     GROUP BY
@@ -120,12 +144,13 @@ class CrudModel extends Model
                                     tps.kelurahan_id, 
                                     SUM(tps.tps_dpt) AS dpt,
                                     COUNT(tps.tps_id) AS sampel,
+                                    (SELECT COUNT(suara_id) FROM suara WHERE kelurahan_id=tps.kelurahan_id) tpsmasuk,
                                     (SELECT SUM(kandidat_1) FROM suara WHERE kelurahan_id=tps.kelurahan_id) kandidat1,
                                     (SELECT SUM(kandidat_2) FROM suara WHERE kelurahan_id=tps.kelurahan_id) kandidat2
                                     FROM
-                                        tps tps
+                                        tps
                                         INNER JOIN
-                                        kelurahan kelurahan
+                                        kelurahan
                                         ON 
                                             tps.kelurahan_id = kelurahan.kelurahan_id
                                     WHERE tps.kecamatan_id = '$id'
@@ -143,7 +168,7 @@ class CrudModel extends Model
                                     (SELECT SUM(kandidat_1) FROM suara WHERE tps_id=tps.tps_id) kandidat1,
                                     (SELECT SUM(kandidat_2) FROM suara WHERE tps_id=tps.tps_id) kandidat2
                                   FROM
-                                    tps tps
+                                    tps
                                   WHERE tps.kelurahan_id='$id'")->getResult();
         return $query;
       }
@@ -157,9 +182,9 @@ class CrudModel extends Model
                                     suara.lampiran, 
                                     suara.created_at
                                   FROM
-                                    tps tps
+                                    tps
                                     LEFT JOIN
-                                    suara suara
+                                    suara
                                     ON 
                                       tps.tps_id = suara.tps_id")->getResult();
         return $query;

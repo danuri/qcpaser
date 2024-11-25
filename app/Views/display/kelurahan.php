@@ -3,6 +3,7 @@
         <tr>
             <th>Kelurahan</th>
             <th>TPS Sample</th>
+            <th>TPS Masuk</th>
             <th>Suara Masuk (%)</th>
             <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
             <th>(2) Syarifah Masitah-Denni Mappa</th>
@@ -16,7 +17,8 @@
         ?>
             <tr>
                 <td><a href="javascript:;" onclick="disttps(<?= $row->kelurahan_id?>)"><?= $row->kelurahan_name ?></a></td>
-                <td><?= $row->dpt ?></td>
+                <td><?= $row->sampel?></td>
+                <td><?= $row->tpsmasuk?></td>
                 <td class="text-center"><?= shortdec($progressuara) ?></td>
                 <td class="text-center"><?= ($row->kandidat1) ? shortdec(($row->kandidat1 / $suaramasuk) * 100) : 0; ?></td>
                 <td class="text-center"><?= ($row->kandidat2) ? shortdec(($row->kandidat2 / $suaramasuk) * 100) : 0; ?></td>

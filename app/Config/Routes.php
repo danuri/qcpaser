@@ -24,6 +24,7 @@ $routes->group("display", ["filter" => "auth"], function ($routes) {
     $routes->get('progres', 'Display::progres');
     $routes->get('progrescalon', 'Display::progrescalon');
     $routes->get('vto', 'Display::vto');
+    $routes->get('progrestps', 'Display::progrestps');
     $routes->get('kecamatan/(:num)', 'Display::kecamatan/$1');
     $routes->get('kelurahan/(:num)', 'Display::kelurahan/$1');
     $routes->get('tps/(:num)', 'Display::tps/$1');

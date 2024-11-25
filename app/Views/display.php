@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard Quickcount | Pilkada Paser 2024</title>
+    <title>Dashboard Quickcount | Pilkada Kutai Timur 2024</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Danunih" name="author" />
@@ -51,10 +51,11 @@
             <div class="container" style="max-width: 1350px;">
                 <div class="row justify-content-center">
                     <div class="col-lg-3">
-                        <!-- <img src="assets/images/dimensimri.png" width="100%"> -->
+                        <center><img src="assets/images/dimensimri.png" width="50%"></center>
                     <div class="mt-3">
                         <!-- <h3 class="text-center">Data Masuk</h3> -->
                     <div id="total_progres" data-colors='["--vz-success"]' class="apex-charts" dir="ltr"></div>
+                    <div class="text-center" id="progrestps" style="font-weight: bold;font-size: 18px;margin-top: -20px;"></div>
                     </div>
                     <div class="card" style="background: none;">
                                             <div class="card-body">
@@ -113,8 +114,10 @@
                     </div>
                     <div class="col-lg-9 col-sm-10">
                         <div class="text-center pt-2">
-                            <h1 class="fw-semibold mb-3 lh-base">Quick Count Pilkada Paser 2024</h1>
-                            
+                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen" style="position: absolute;right: 0;">
+                                <i class="bx bx-fullscreen fs-22"></i>
+                            </button>
+                            <h1 class="fw-semibold mb-3 lh-base">Quick Count Pilkada Kutai Timur 2024</h1>
                             <div class="row">
                                 <div class="col-xl-6">
                                     <img src="assets/images/calon/1.png" alt="" class="img-paslon" />
@@ -177,27 +180,27 @@
                 <!-- end row -->
 
                 <div class="row g-3">
-                    <table class="table table-stripped align-middle">
+                    <table class="table table-stripped align-middle" style="">
                         <thead>
                             <tr>
-                                <th>Kecamatan</th>
+                                <th>Zona</th>
                                 <th>TPS Sample</th>
                                 <th>TPS Masuk</th>
                                 <th>Data Masuk (%)</th>
-                                <th>(1) Fahmi Fadli-Ikhwan Antasari</th>
-                                <th>(2) Syarifah Masitah-Denni Mappa</th>
+                                <th>(1) Fahmi Fadli - Ikhwan Antasari (%)</th>
+                                <th>(2) Syarifah Masitah - Denni Mappa (%)</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
                             foreach($kecamatan as $row){
                                 $suaramasuk = ($row->kandidat1+$row->kandidat2);
-                                $progressuara = ($suaramasuk / $row->dpt)*100;
+                                $progressuara = ($row->tpsmasuk / $row->sampel)*100;
                             ?>
                             <tr>
                                 <td><a href="javascript:;" onclick="distkelurahan(<?= $row->kecamatan_id?>)"><?= $row->kecamatan_name?></a></td>
                                 <td><?= $row->sampel?></td>
-                                <td>...</td>
+                                <td><?= $row->tpsmasuk?></td>
                                 <td><?= shortdec($progressuara)?></td>
                                 <td class="text-center"><?= ($row->kandidat1)?shortdec(($row->kandidat1/$suaramasuk)*100):0;?></td>
                                 <td class="text-center"><?= ($row->kandidat2)?shortdec(($row->kandidat2/$suaramasuk)*100):0;?></td>
@@ -225,6 +228,23 @@
 
     </div>
     <!-- end layout wrapper -->
+
+<!-- staticBackdrop Modal -->
+<div class="modal fade" id="distKecamatan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">                
+                <div class="mt-4" id="bodykecamatan">
+                    <h4 class="mb-3">Distribusi Suara Kecamatan</h4>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="distKelurahan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
@@ -281,10 +301,16 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+            $('[data-toggle="fullscreen"]').click(function(event) {
+                document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ? document.cancelFullScreen ? document.cancelFullScreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitCancelFullScreen && document.webkitCancelFullScreen() : document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.webkitRequestFullscreen && document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            });
+        });
+        
         var options = {
           series: [],
           chart: {
-          height: 350,
+          height: 400,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -307,6 +333,12 @@
         colors: ['#4CAF50', '#FF5722'],
         dataLabels: {
           enabled: true,
+          style: {
+                fontSize: '7px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 'bold',
+                colors: undefined
+            },
         },
         stroke: {
           curve: 'smooth'
@@ -335,8 +367,18 @@
           title: {
             text: 'Perolehan Suara'
           },
-          min: 5,
-          max: 70
+          min: 0,
+          max: 70,
+          labels: {
+            show: true,
+            style: {
+                colors: [],
+                fontSize: '9px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 400,
+                cssClass: 'apexcharts-yaxis-label',
+            }
+            },
         },
         legend: {
           position: 'top',
@@ -359,16 +401,21 @@
             method: 'GET',
             url: url,
             }).then(function(response) {
-            chart.updateSeries([
-                {
-                name: '(1) Kasmidi - Kinsu',
-                data: response.data.kandidat1
+            chart.updateOptions({
+                xaxis: {
+                    categories: response.data.categories
                 },
-                {
-                name: '(2) Ardiansyah - Mahyunadi',
-                data: response.data.kandidat2
-                }
-            ])
+                series: [
+                    {
+                    name: '(1) Fahmi Fadli - Ikhwan Antasari',
+                    data: response.data.kandidat1
+                    },
+                    {
+                    name: '(2) Syarifah Masitah - Denni Mappa',
+                    data: response.data.kandidat2
+                    }
+                ]
+            })
             });
         }
 
@@ -451,6 +498,15 @@
         function updateVto(){
             $.get('<?= site_url('display/vto')?>', function(res) {
                 $('#vto').html(res);
+            });
+        }
+
+        updateTps();
+        setInterval(updateTps, 10000);
+
+        function updateTps(){
+            $.get('<?= site_url('display/progrestps')?>', function(res) {
+                $('#progrestps').html(res);
             });
         }
     </script>

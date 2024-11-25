@@ -21,6 +21,12 @@
     </div>
   </div>
 </div>
+
+<div class="card">
+  <div class="card-body">
+    <h4>Selamat Datang</h4>
+  </div>
+</div>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

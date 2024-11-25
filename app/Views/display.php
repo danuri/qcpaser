@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard Quickcount | Pilkada Kutai Timur 2024</title>
+    <title>Dashboard Quickcount | Pilkada Paser 2024</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Danunih" name="author" />
@@ -117,7 +117,7 @@
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen" style="position: absolute;right: 0;">
                                 <i class="bx bx-fullscreen fs-22"></i>
                             </button>
-                            <h1 class="fw-semibold mb-3 lh-base">Quick Count Pilkada Kutai Timur 2024</h1>
+                            <h1 class="fw-semibold mb-3 lh-base">Quick Count Pilkada Paser 2024</h1>
                             <div class="row">
                                 <div class="col-xl-6">
                                     <img src="assets/images/calon/1.png" alt="" class="img-paslon" />

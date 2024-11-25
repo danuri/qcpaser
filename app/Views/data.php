@@ -131,6 +131,14 @@
                       <input type="number" class="form-control" name="tidak_sah" id="tidak_sah">
                   </div>
               </div>
+              <div class="row mb-3">
+                  <div class="col-lg-3">
+                      <label for="tidak_sah" class="form-label">Lampiran C1</label>
+                  </div>
+                  <div class="col-lg-9">
+                      <input type="file" class="form-control" name="lampiran">
+                  </div>
+              </div>
           </form>
             </div>
             <div class="modal-footer">
@@ -149,7 +157,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= site_url('data/add')?>" id="addform">
+            <form method="POST" action="<?= site_url('data/add')?>" id="addform" enctype="multipart/form-data">
               <div class="row mb-3">
                   <div class="col-lg-3">
                       <label for="tps_name" class="form-label">TPS</label>
@@ -181,6 +189,14 @@
                   </div>
                   <div class="col-lg-9">
                       <input type="number" class="form-control" name="tidak_sah" required>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-lg-3">
+                      <label for="kandidat5" class="form-label">Lampiran C1</label>
+                  </div>
+                  <div class="col-lg-9">
+                  <input type="file" class="form-control" name="photo">
                   </div>
               </div>
           </form>

@@ -193,6 +193,7 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <?php if(session('level') == 1){?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('admin')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboard</span>
@@ -204,18 +205,18 @@
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Distribusi Wilayah</span>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('display')?>" target="_blank">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Display</span>
+                            </a>
+                        </li>
+                        <?php }?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('data')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Data Suara</span>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('display')?>" target="_blank">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Display</span>
-                            </a>
-                        </li>
                         
                     </ul>
                 </div>

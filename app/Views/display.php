@@ -328,7 +328,7 @@
           }
         },
         noData: {
-            text: 'Loading...'
+            text: 'Memuat data...'
         },
         colors: ['#4CAF50', '#FF5722'],
         dataLabels: {
@@ -368,7 +368,7 @@
             text: 'Perolehan Suara'
           },
           min: 0,
-          max: 70,
+          max: 100,
           labels: {
             show: true,
             style: {

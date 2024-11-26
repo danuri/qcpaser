@@ -65,6 +65,14 @@ class Data extends BaseController
               return redirect()->to('data');
           }
 
+          $suara = new SuaraModel();
+          $ceksuara    = $suara->where('tps_id',session('tps_id'))->first();
+
+          if($ceksuara){
+            session()->setFlashdata('error', 'message', 'Suara TPS sudah pernah direkam.');
+              return redirect()->to('data');
+          }
+
           $tpsm = new TpsModel;
           $tps = $tpsm->find($this->request->getVar('tps_id'));
 

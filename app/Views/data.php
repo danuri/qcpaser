@@ -62,7 +62,7 @@
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <?php if($suaramasuk > 0){?>
                           <?php if($row->lampiran){ ?>
-                            <a href="javascript:;" type="button" class="btn btn-sm btn-warning" onclick="preview('<?= base_url('uploads/c1/'.$row->lampiran) ?>')">C1</a>
+                            <?= ($row->lampiran)?'<a href="'.base_url('uploads/c1/'.$row->lampiran).'" type="button" class="btn btn-sm btn-warning image-popup">C1</a>':'';?>
                           <?php }?>
                           <a href="javascript:;" type="button" class="btn btn-sm btn-primary" onclick="edit(<?= $row->tps_id?>,'<?= $row->tps_name?>')">Update</a>
                           <?php }else{?>

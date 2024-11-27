@@ -20,6 +20,7 @@
     <!-- App Css-->
     <link href="<?= base_url()?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
+    <link rel="stylesheet" href="<?= base_url()?>assets/libs/glightbox/css/glightbox.min.css">
     <!-- <link href="<?= base_url()?>assets/css/custom.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
@@ -296,6 +297,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?= base_url()?>assets/js/app.js"></script>
 
+    <script src="<?= base_url()?>assets/libs/glightbox/js/glightbox.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
@@ -307,6 +310,8 @@
                 order : [[0,'desc']],
                 pageLength : 100
             });
+
+            var lightbox=GLightbox({selector:".image-popup",title:!1});
           });
         function alert($text) {
             Toastify({

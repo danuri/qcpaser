@@ -34,7 +34,7 @@ class Data extends BaseController
               'tidak_sah' => $this->request->getVar('tidak_sah'),
             ];
 
-            $file = $this->request->getFile('photo');
+            $file = $this->request->getFile('lampiran');
               if (! $file->hasMoved()) {
                 $newName = $file->getRandomName();
                 $file->move('./uploads/c1/', $newName);
@@ -83,7 +83,7 @@ class Data extends BaseController
             'tidak_sah' => $this->request->getVar('tidak_sah')
           ];
 
-          $file = $this->request->getFile('photo');
+          $file = $this->request->getFile('lampiran');
           if (! $file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move('./uploads/c1/', $newName);

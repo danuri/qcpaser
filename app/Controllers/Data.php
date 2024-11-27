@@ -85,15 +85,14 @@ class Data extends BaseController
             'tidak_sah' => $this->request->getVar('tidak_sah')
           ];
 
-          if (!empty($_FILES['photo']['name'])){
-            $file = $this->request->getFile('photo');
-            if (! $file->hasMoved()) {
-              $newName = $file->getRandomName();
-              $file->move('./uploads/c1/', $newName);
-  
-              $param['lampiran'] = $newName;
-            }
+          $file = $this->request->getFile('photo');
+          if (! $file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move('./uploads/c1/', $newName);
+
+            $param['lampiran'] = $newName;
           }
+          
           $suara = new SuaraModel();
           $suara->insert($param);
 

@@ -34,13 +34,15 @@ class Data extends BaseController
               'tidak_sah' => $this->request->getVar('tidak_sah'),
             ];
 
-            $file = $this->request->getFile('lampiran');
+            if (!empty($_FILES['lampiran']['name'])){
+              $file = $this->request->getFile('lampiran');
               if (! $file->hasMoved()) {
                 $newName = $file->getRandomName();
                 $file->move('./uploads/c1/', $newName);
     
                 $param['lampiran'] = $newName;
               }
+            }
 
             $tpsid = $this->request->getVar('tps_id');
   
@@ -83,14 +85,15 @@ class Data extends BaseController
             'tidak_sah' => $this->request->getVar('tidak_sah')
           ];
 
-          $file = $this->request->getFile('lampiran');
-          if (! $file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('./uploads/c1/', $newName);
-
-            $param['lampiran'] = $newName;
+          if (!empty($_FILES['lampiran']['name'])){
+            $file = $this->request->getFile('lampiran');
+            if (! $file->hasMoved()) {
+              $newName = $file->getRandomName();
+              $file->move('./uploads/c1/', $newName);
+  
+              $param['lampiran'] = $newName;
+            }
           }
-          
           $suara = new SuaraModel();
           $suara->insert($param);
 

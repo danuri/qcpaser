@@ -61,10 +61,12 @@
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <?php if($suaramasuk > 0){?>
-                          <a href="javascript:;" type="button" class="btn btn-sm btn-warning" onclick="preview('<?= base_url('uploads/c1/'.$row->lampiran) ?>')">C1</a>
+                          <?php if($row->lampiran){ ?>
+                            <a href="javascript:;" type="button" class="btn btn-sm btn-warning" onclick="preview('<?= base_url('uploads/c1/'.$row->lampiran) ?>')">C1</a>
+                          <?php }?>
                           <a href="javascript:;" type="button" class="btn btn-sm btn-primary" onclick="edit(<?= $row->tps_id?>,'<?= $row->tps_name?>')">Update</a>
                           <?php }else{?>
-                          <a href="javascript:;" type="button" class="btn btn-sm btn-primary" onclick="add(<?= $row->tps_id?>,'<?= $row->tps_name?>')">Input</a>
+                          <a href="javascript:;" type="button" class="btn btn-sm btn-success" onclick="add(<?= $row->tps_id?>,'<?= $row->tps_name?>')">Input</a>
                         <?php }?>
                       </div>
                     </td>    

@@ -197,10 +197,10 @@
               </div>
               <div class="row mb-3">
                   <div class="col-lg-3">
-                      <label for="kandidat5" class="form-label">Lampiran C1</label>
+                      <label for="lampiran" class="form-label">Lampiran C1</label>
                   </div>
                   <div class="col-lg-9">
-                  <input type="file" class="form-control" name="photo">
+                  <input type="file" class="form-control" name="lampiran">
                   </div>
               </div>
           </form>

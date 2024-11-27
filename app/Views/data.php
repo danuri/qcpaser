@@ -99,7 +99,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="" id="editform">
+            <form method="POST" action="" id="editform" enctype="multipart/form-data">
               <div class="row mb-3">
                   <div class="col-lg-3">
                       <label for="tps_name" class="form-label">TPS</label>

@@ -94,6 +94,7 @@ class Data extends BaseController
               $param['lampiran'] = $newName;
             }
           }
+          
           $suara = new SuaraModel();
           $suara->insert($param);
 
